@@ -14,6 +14,7 @@ function App() {
   ]
 )
 
+  const [ShowTododForm, setShowTododForm] = useState(false);
 
   const addTodo = (description, assigned) => {
     let rowNumber = 0;
@@ -30,6 +31,15 @@ function App() {
 
       setTodos(todos => [...todos , newTodo])
     }
+
+    const deleteTodo = (deleteTodoRowNumber) => {
+      let filtered = todos.filter(function(value){
+        return value.rowNumber !== deleteTodoRowNumber;
+      });
+      setTodos(filtered);
+    }
+
+    
   
 
   return (
@@ -39,11 +49,14 @@ function App() {
           Todo List
         </div>
         <div className="card-body">
-            <TodoTable todos={todos}/>
-            <button className="btn btn-primary" onClick={addTodo}>
-              New add Todo
+            <TodoTable todos={todos} deleteTodo={deleteTodo} />
+            <button className="btn btn-primary" onClick={() => setShowTododForm(!ShowTododForm)}>
+              {ShowTododForm? 'Close Todo list' : 'Add new todo'}
             </button>
-            <NewTodoForm addTodo={addTodo} />
+            {ShowTododForm &&
+              <NewTodoForm addTodo={addTodo} />
+              }
+            
         </div>
       </div>
     </div>
