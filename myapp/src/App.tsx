@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import "./App.css";
-import TodoTable from "./components/TodoTable";
-import NewTodoForm from "./components/NewTodoForm";
+import {TodoTable} from "./components/TodoTable";
+import {NewTodoForm} from "./components/NewTodoForm";
 
-function App() {
+export const App = () => {
   const [todos, setTodos] = useState([
     { rowNumber: 1, rowDescription: "feed coco", rowAssigned: "luwin" },
     { rowNumber: 2, rowDescription: "feed trixie", rowAssigned: "anuka" },
@@ -55,4 +55,4 @@ function App() {
   );
 }
 
-export default App;
+
