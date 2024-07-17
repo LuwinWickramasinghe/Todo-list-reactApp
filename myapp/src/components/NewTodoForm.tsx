@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-function NewTodoForm(props) {
+function NewTodoForm(props:{addTodo : Function}) {
     const [assingned, setAssinged] = useState("");
     
 
@@ -25,7 +25,7 @@ function NewTodoForm(props) {
                 </div>
                 <div className='mb-5'>
                     <label className='form-lable'>Description</label>
-                    <input type='text' className='form-control' rows={3} onChange={e => setDescription(e.target.value)} value={description} required></input>
+                    <textarea  className='form-control' rows={3} onChange={e => setDescription(e.target.value)} value={description} required></textarea>
                 </div>
                 <button type='button' className='btn btn-primary mt-3' onClick={submitTodo}>Add new todo</button>
 
